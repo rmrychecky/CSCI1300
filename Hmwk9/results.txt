@@ -1,0 +1,4 @@
+Leader: raegan
+Miles Traveled: 288
+Food Remaining: 560
+Cash Remaining: 226

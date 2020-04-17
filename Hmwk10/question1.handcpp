@@ -1,0 +1,168 @@
+
+
+ChildGrowth::ChildGrowth() {
+	name = "";
+	currentAge = 0;
+	weightMetricConversion = 0.45;
+
+	for (int i =0; i < 10; i++) {
+		height[i] = 0. ;
+		weight[i] = 0. ;
+	}
+}
+
+ChildGrowth::ChildGrowth(string n) {
+	name = n;
+	currentAge = 0;
+	weightMetricConversion = 0.45;
+
+	for (int i =0; i < MAX_AGE; i++) {
+		height[i] = 0.0;
+		weight[i] = 0.0 ;
+	}
+}
+
+ChildGrowth::ChildGrowth(string n, int a) {
+	name = n;
+	currentAge = a;
+	weightMetricConversion = 0.45;
+
+	for (int i =0; i < MAX_AGE; i++) {
+		height[i] = 0.0;
+		weight[i] = 0.0 ;
+	}
+}
+
+ChildGrowth::ChildGrowth(string n, int a, float h[], float w[]) {
+	name = n;
+	currentAge = a;
+
+	for (int i =0; i < 10; i++) {
+		height[i] = h[i];
+		weight[i] = w[i];
+	}
+}
+
+//Getter and Setters
+string ChildGrowth::getName() {
+	return name;
+}
+
+void ChildGrowth::setName(string n) {
+	name = n;
+}
+
+int ChildGrowth::getCurrentAge() {
+	return currentAge;
+}
+
+void ChildGrowth::setCurrentAge(int a) {
+	currentAge = a;
+}
+
+void ChildGrowth::setHeight(float h[]) {
+	for (int i =0; i < MAX_AGE; i++) {
+		height[i] = h[i];
+	}
+}
+
+void ChildGrowth::setWeight(float w[]) {
+	for (int i =0; i < MAX_AGE; i++) {
+		weight[i] = w[i];
+	}
+}
+// Helper Function
+float ChildGrowth::feetToMeter(float feet) {
+	return feet * 0.3048;
+}
+
+// Helper Function
+float ChildGrowth::poundToKg(float pound) {
+	return pound * 0.453592;
+}
+
+// Helper Function
+float ChildGrowth::calculateBmi(int age) {
+	if (age > 9) {
+		return -1;
+	}
+
+	float w = weight[age-1];
+	float h = height[age-1];
+
+	//BMI Calculation
+	w = poundToKg(w);
+	h = feetToMeter(h);
+	h = h * h;
+
+	float bmi = w / h;
+	return bmi;
+     }
+string ChildGrowth::getCategory(int age) {
+	float bmi = calculateBmi(age);
+
+	if (bmi < 0) {
+		return "Please enter an age in the range of 1-10.";
+	}
+
+	string category;
+
+	if (bmi < 18.5) {
+		category = "UNDER WEIGHT";
+	} else if(bmi < 24.9) {
+		category = "NORMAL WEIGHT";
+	} else if(bmi < 29.9) {
+		category = "OVER WEIGHT";
+	} else {
+		category = "OBESE";
+	}
+	
+	return category;
+}
+
+
+
+
+class ChildGrowth 
+{
+private:
+
+   string name;
+   int currentAge;
+   double weightMetricConversion;
+   float weight[10];
+   float height[10];
+
+public: //set each function with their perspective input types
+
+  ChildGrowth();
+  
+  ChildGrowth(string n);
+  
+  ChildGrowth(string n, int a);
+  
+  ChildGrowth(string n, int a, float h[], float w[]);
+  
+  string getName();
+  
+  void setName(string n);
+  
+  int getCurrentAge();
+  
+  void setCurrentAge(int a);
+  
+  void setHeight(float h[]);
+  
+  void setWeight(float w[]);
+  
+  float feetToMeter(float feet);
+  
+  float poundToKg(float pound);
+  
+  float calculateBmi(int age);
+  
+  string getCategory(int age);
+  
+  
+};
+

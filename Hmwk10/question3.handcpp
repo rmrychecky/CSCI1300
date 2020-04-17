@@ -1,0 +1,95 @@
+Textbook::Textbook(){
+  title = "";
+  pages  = 0;
+  cost = 0.0;
+  online = false;
+}
+
+Textbook::Textbook(string t, int p, float c, bool o){
+  title = t;
+  pages  = p;
+  cost = c;
+  online = o;
+}
+void Textbook::setTitle(string t){
+  title=t;
+}
+string Textbook::getTitle(){
+  return title;
+}
+void Textbook::setPages(int p){
+  pages=p;
+}
+int Textbook::getPages(){
+  return pages;
+}
+void Textbook::setCost(float c){
+  cost=c;
+}
+float Textbook::getCost(){
+  return cost;
+}
+void Textbook::setOnline(bool o){
+  online=o;
+}
+bool Textbook::getOnline(){
+  return online;
+}
+float Textbook::costPerPage(){
+  return (cost / pages);
+}
+
+
+class Textbook 
+{
+private:
+
+  string title;
+  int pages;
+  float cost;
+  bool online;
+
+public: //set each function with their perspective input types
+
+  Quarterback();
+  
+  Quarterback(string n, int comp, int att, int yards, int td, int i);
+  
+  void setName(string new_name);
+  
+  string getName();
+  
+  void setComp(int x);
+  
+  int getComp();
+  
+  void setAtt(int x);
+  
+  int getAtt();
+  
+  void setYards(int x);
+  
+  int getYards();
+  
+  void setTD(int x);
+  
+  int getTD();
+  
+  void setPick(int x);
+  
+  int getPick();
+  
+  void PassCompleted(int x);
+  
+  void PassAttempted();
+  
+  void Interception();
+  
+  Quarterback(string d);
+  
+  float PasserRating();
+  
+  void Touchdown(int x);
+  
+};
+
